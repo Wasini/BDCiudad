@@ -2,25 +2,12 @@
 import java.sql.*;
 import java.io.*;
 
-public class coneccion {
+public class Main {
 
 	public static void main(String[] args) throws Exception{
 
-		try {
-			String driver = "org.postgresql.Driver";
-			String url = "jdbc:postgresql://localhost:5432/ciudad";
-			String username = "postgres";
-			String password = "root";
-
-			// carga el driver de la base de datos si no se cargo.
-			 Class.forName(driver);
-		
-			// intenta establecer la conexión de red a la base de datos.
-			Connection connection = DriverManager.getConnection(url, username, password);
-
-			// set path al esquema "ciudad"
-			String nameSchema = "ciudad";                        
-			setSchema(nameSchema,connection);
+		// intenta establecer la conexión de red a la base de datos.
+		Connection connection = SinConnection.getInstance();
 
       		//Datos de un padrino a cargar
       		int dni = 36425882;
@@ -75,13 +62,7 @@ public class coneccion {
 	      	System.out.print("\n   ");
    			}
    			**/
-		}
-		catch(ClassNotFoundException cnfe) {
-      		System.err.println("Error loading driver: " + cnfe);
-    	} catch(SQLException sqle) {
-    		sqle.printStackTrace();
-      		System.err.println("Error connecting: " + sqle);
-    	}
+
 	}
 
     private static void setSchema(String nameSchema,Connection conn) throws Exception {
