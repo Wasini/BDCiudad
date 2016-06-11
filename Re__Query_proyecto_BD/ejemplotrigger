@@ -1,0 +1,4 @@
+﻿--INSERT INTO ciudad.persona VALUES (2000,'tevez','carlos',DEFAULT,5800,DEFAULT,DEFAULT,DEFAULT,'19901016',25);
+--INSERT INTO ciudad.donante (DNI,CUIL) VALUES (2000,'20-2000-9');
+--DELETE FROM ciudad.donante;
+select * from ciudad.donante_eliminado;
