@@ -1,4 +1,5 @@
 /** Clase para obtener una coneccion con la base de datos **/
+/** Clase para obtener una coneccion con la base de datos **/
 import java.sql.*;
 import java.io.*;
 
@@ -28,7 +29,6 @@ public class Main {
   	PreparedStatement statementOut = connection.prepareStatement(queryOut);
 		// Send query to database and store results.
     ResultSet resultSet = statementOut.executeQuery();
-
     // Print results.
     while(resultSet.next()) {
     // Quarter
