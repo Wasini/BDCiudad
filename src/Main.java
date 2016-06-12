@@ -36,7 +36,7 @@ public class Main {
   	statementIn.setInt(8, tel_f);
   	statementIn.setDate(9, f_nac);
   	statementIn.setInt(10, edad);
-  	statementIn.executeUpdate();**/
+  	statementIn.executeUpdate();
 
     deleteDonante.deleteDon();
 
@@ -62,6 +62,7 @@ public class Main {
 	  System.out.print("\n   ");
 	  System.out.print("\n   ");
    	}
-   	**/
+   	
 	}
+        * */
 }
