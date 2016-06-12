@@ -23,31 +23,32 @@ public class SinConnection {
         if (instancia == null) { 
             try {
                 String driver = "org.postgresql.Driver";
-		String url = "jdbc:postgresql://localhost:5432/ciudad";
-		String username = "postgres";
-		String password = "root";
+                String url = "jdbc:postgresql://localhost:5432/ciudad";
+                String username = "postgres";
+                String password = "root";
 
-		// carga el driver de la base de datos si no se cargo.
-		 Class.forName(driver);
+        		// carga el driver de la base de datos si no se cargo.
+                Class.forName(driver);
 		
-		// intenta establecer la conexión de red a la base de datos.
-		instancia = DriverManager.getConnection(url, username, password);
+                // intenta establecer la conexión de red a la base de datos.
+                instancia = DriverManager.getConnection(url, username, password);
 
-		// set path al esquema "ciudad"
-		String nameSchema = "ciudad";                        
-		setSchema(nameSchema,instancia);
+                // set path al esquema "ciudad"
+                String nameSchema = "ciudad";                        
+                setSchema(nameSchema,instancia);
             }
             catch(ClassNotFoundException cnfe) {
-      		System.err.println("Error loading driver: " + cnfe);
+      		    System.err.println("Error loading driver: " + cnfe);
             } catch(SQLException sqle) {
-    		sqle.printStackTrace();
-      		System.err.println("Error connecting: " + sqle);
+    		  sqle.printStackTrace();
+      		    System.err.println("Error connecting: " + sqle);
             }
         }
-       }
+    }
     private static void setSchema(String nameSchema,Connection conn) throws SQLException {
-        PreparedStatement statementIn = conn.prepareStatement("SET search_path TO "+nameSchema);
-        statementIn.execute();
+        String query = "SET search_path TO "+nameSchema;
+        Statement statementIn = conn.createStatement();
+        statementIn.executeUpdate(query);
     }
 
     public static Connection getInstance() {
