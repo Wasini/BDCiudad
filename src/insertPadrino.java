@@ -34,7 +34,7 @@ public class insertPadrino{
   			statement.setDate(9, f_nacAux);
   			statement.setInt(10, edadAux);
 			statement.executeUpdate();
-			System.out.println("Padrino added.");
+			System.out.println("Padrino añadido exitosamente.");
 		}else{
 			throw new InvalidDataException("INSERT PADRINO: Padrino ya existente."); 
 		}
