@@ -10,16 +10,16 @@ public class Main {
     Connection connection = SinConnection.getInstance();
 
  		//Datos de un padrino a cargar
- 		/**int dni = 36425882;
+ 		int dni = 36425883;
  		String name = new String("Ezequias");
- 		String lastaname = new String("Aramburu");
+ 		String lastname = new String("Aramburu");
  		String adress = new String("Dinkeldein 1156");
  		int cod_postal = 5800;
  		String email = new String("ezequias.aramburu@gmail.com");
     String face = new String("Ezequias Aramburu");
     int tel_f = 4634777;
     java.sql.Date f_nac = java.sql.Date.valueOf("1992-01-14");
-    int edad = 24;**/
+    int edad = 24;
 
     // String para la insercion en la base de datos
     //String queryIn = "insert INTO persona(dni, apellido, nombre, direccion, cod_postal, e_mail, facebook, tel_fijo, fecha_nac, edad) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -38,7 +38,8 @@ public class Main {
   	statementIn.setInt(10, edad);
   	statementIn.executeUpdate();**/
 
-    deleteDonante.deleteDon();
+    insertPadrino.insertPad(dni,name,lastname,adress,cod_postal,email,face,tel_f,f_nac,edad);
+    //deleteDonante.deleteDon();
 
   	/**String queryOut = "SELECT * FROM  ciudad.persona";
   	PreparedStatement statementOut = connection.prepareStatement(queryOut);

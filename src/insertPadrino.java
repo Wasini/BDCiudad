@@ -1,5 +1,6 @@
 /** Clase para insertar un padrino **/
 import java.sql.*;
+import java.io.*;
 public class insertPadrino{
 
 	//Instancia de la coneccion
@@ -7,7 +8,7 @@ public class insertPadrino{
 
 	//Metodo que retorna true si el padrino ya existe en la base de datos
 	public static boolean existsPadrino(int dni_padrino)throws ClassNotFoundException, SQLException {
-		String query = "SELECT DISTINCT dni FROM padrino WHERE dni = "+dni_padrino;
+		String query = "SELECT DISTINCT dni FROM persona WHERE dni = "+dni_padrino;
 		Statement statement = connection.createStatement();
 		ResultSet resultSet = statement.executeQuery(query);
 		boolean exists = resultSet.next();
@@ -15,21 +16,36 @@ public class insertPadrino{
 	}
 
 	//Metodo para insertar un padrino en la base de datos
-	public static void insertPadrino(int dniAux, String nombreAux, String apellidoAux, String fecha_nacAux, String direccionAux, int cod_postalAux, String e_mailAux, 
-									 String facebookAux, int edadAux, int tel_fijoAux, int tel_celAux
-									)throws ClassNotFoundException, SQLException, InvalidDataException {
+	public static void insertPad(int dniAux, String apeAux, String nomAux, String dirAux, int c_posAux, String emailAux, String fbAux, 
+								int tel_FijoAux, Date f_nacAux, int edadAux)throws ClassNotFoundException, SQLException, InvalidDataException {
 		if (!existsPadrino(dniAux)){
-			String query = "INSERT INTO persona (dni, nombre, apellido, fecha_nac, direccion, cod_postal, e_mail, facebook, edad, tel_fijo, tel_cel)"
-							+ " VALUES ("+dniAux+", "+nombreAux+", "+apellidoAux+", "+fecha_nacAux+", "+direccionAux+", "+cod_postalAux+", "+e_mailAux+", "+facebookAux+", "+edadAux+", "+tel_fijoAux+", "+tel_celAux+")";
-			Statement statement = connection.createStatement();
-			statement.executeUpdate(query);
-
-			query ="INSERT INTO padrino (dni) VALUES("+dniAux+")";
-			statement = connection.createStatement();
-			statement.executeUpdate(query);
+			System.out.println("Llegue2");
+			String query = "INSERT INTO persona (dni, apellido, nombre, direccion, cod_postal, e_mail, facebook, tel_fijo, fecha_nac, edad)"
+							+ " VALUES ("+dniAux+", "+apeAux+", "+nomAux+", "+dirAux+", "+c_posAux+", "+emailAux+", "+fbAux+", "+tel_FijoAux+", "+f_nacAux+", "+edadAux+")";
+			System.out.println("Llegue3");
+			PreparedStatement statement = connection.prepareStatement(query);
+			statement.setInt(1, dniAux);
+  			statement.setString(2, apeAux);
+  			statement.setString(3, nomAux);
+  			statement.setString(4, dirAux);
+  			statement.setInt(5, c_posAux);
+  			statement.setString(6, emailAux);
+  			statement.setString(7, fbAux);
+  			statement.setInt(8, tel_FijoAux);
+  			statement.setDate(9, f_nacAux);
+  			statement.setInt(10, edadAux);
+			System.out.println("Llegue4");
+			statement.executeUpdate();
+			System.out.println("Llegue5");
+			/*+String query1 ="INSERT INTO padrino (dni) VALUES("+dniAux+")";
+			System.out.println("Llegue6");
+			Statement statement1 = connection.createStatement();
+			System.out.println("Llegue7");
+			statement1.executeUpdate(query1);
+			System.out.println("Llegue8");**/
 			System.out.println("Padrino added.");
 		}else{
-			throw new InvalidDataException("INSERT PADRINO: padrino already exists."); 
+			throw new InvalidDataException("INSERT PADRINO: Padrino ya existente."); 
 		}
 	}
 	
