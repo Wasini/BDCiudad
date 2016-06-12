@@ -4,7 +4,7 @@ import java.io.*;
 
 public class Main {
 
-	public static void main(String[] args) throws Exception{
+	/*public static void main(String[] args) throws Exception{
 
 		// intenta establecer la conexión de red a la base de datos.
 		Connection connection = SinConnection.getInstance();
@@ -61,10 +61,10 @@ public class Main {
 	      	System.out.print("\n   ");
 	      	System.out.print("\n   ");
    			}
-   			**/
+   			
 
 	}
-
+*/
     private static void setSchema(String nameSchema,Connection conn) throws Exception {
         PreparedStatement statementIn = conn.prepareStatement("SET search_path TO "+nameSchema);
         statementIn.execute();
