@@ -81,7 +81,26 @@ public class Command{
         
         /*listar los donantes con aportes mensuales y los medios de pago **/
         public static void showDonante()throws ClassNotFoundException, SQLException{
-		
+            String query = "SELECT p.dni,p.apellido,p.nombre,a.nombre_programa,a.monto,a.frecuencia "
+                    + "FROM persona p,aporte a "
+                    + "WHERE (p.dni = a.dni);";
+            Statement st = connection.createStatement();
+            ResultSet rs =  st.executeQuery(query);
+            int count = 0;
+            while (rs.next()) {
+                int dni = rs.getInt("dni");
+                String ape = rs.getString("apellido");
+                String nom = rs.getString("nombre");
+                String prog = rs.getString("nombre_programa");
+                int monto = rs.getInt("monto");
+                String frec = rs.getString("frecuencia");
+                System.out.println("Mostrando log "+count+" =========================");
+                System.out.println("DNI: "+dni);
+                System.out.println("Apellido: "+ape);
+                System.out.println("Nombre: "+nom);
+                System.out.println("Progama adherido: "+prog);
+                System.out.println("Monto aportado: "+monto+" de forma "+frec);
+            }
 	}
         
         //Funcion auxiliar de la clase
