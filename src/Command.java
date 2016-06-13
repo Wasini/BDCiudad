@@ -1,4 +1,4 @@
-/** Clase para insertar un padrino **/
+/** Clase con metodos para insertar,eliminar,consultar datos a la base de datos ciudad sobre el esquema ciudad **/
 import java.sql.*;
 import java.io.*;
 import java.util.Scanner;
@@ -7,7 +7,6 @@ public class Command{
 
 	//Instancia de la coneccion
 	public static Connection connection = SinConnection.getInstance();
-
 	//Metodo que retorna true si el dni de un padrino ya existe en la tabla elegida
 	public static boolean existsPersonaOnTable(int dni_persona,String tableName)throws ClassNotFoundException, SQLException {
 		String query = "SELECT DISTINCT dni FROM "+tableName+" WHERE dni = "+dni_persona;
@@ -80,9 +79,25 @@ public class Command{
 		}
 	}
         
+        /*listar los donantes con aportes mensuales y los medios de pago **/
+        public static void showDonante()throws ClassNotFoundException, SQLException{
+		
+	}
+        
+        //Funcion auxiliar de la clase
         //Dado un Date calcula la edad con la fecha actual
 	private static int calcEdad (Date fechaNac) {
-            int currYear = new java.util.Date().getYear();
-            return (currYear - fechaNac.getYear());
+            java.util.Date now = new java.util.Date();
+            int currYear = now.getYear();
+            int yearOfBirthDay = fechaNac.getYear();
+            int ageWithBirthDay = (currYear - yearOfBirthDay);
+            java.util.Date compareMonthDay = now;
+            compareMonthDay.setYear(yearOfBirthDay);
+            if (compareMonthDay.compareTo(fechaNac)>=0) {
+                return ageWithBirthDay;
+            }
+            else {
+                return (ageWithBirthDay-1);
+            }
         }
 }
