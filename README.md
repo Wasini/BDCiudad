@@ -28,3 +28,10 @@ Falla cuando:
 
 	* El dni ingresado no corresponde a ningun donante en la base de datos.
 
+Para listar los donantes con sus aportes solo se debe seleccionar la opcion 3) del menu
+
+##Comandos para correr desde consola:
+
+	* Posisionado en el directorio src compilar todos los archivos .java --> javac nombreArchivo.java 
+
+	* Ejecutar -->  java -cp ".:postgresql-9.4.1208.jre6.jar" Main (Ésto con el archivo mencionado entre "", en el directorio donde se encuentra).
