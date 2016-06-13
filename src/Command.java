@@ -45,7 +45,7 @@ public class Command{
 	//Metodo para insertar un donante en la base de datos
 	public static void insertDonante(int dniAux,String ocup,String cuil)throws ClassNotFoundException, SQLException, InvalidDataException {
 		if (!existsPersonaOnTable(dniAux,"persona")){
-                    throw new InvalidDataException("INSERTAR PADRINO: No se encontro una persona con el dni ingresado");
+                    throw new InvalidDataException("INSERTAR DONANTE: No se encontro una persona con el dni ingresado");
                 }
                 else {
                     if (!existsPersonaOnTable(dniAux,"donante")) {
@@ -56,9 +56,9 @@ public class Command{
   			statement.setString(2, ocup);
   			statement.setString(3, cuil);
 			statement.executeUpdate();
-			System.out.println("Padrino añadido exitosamente.");
+			System.out.println("Donante añadido exitosamente.");
                     }else{
-			throw new InvalidDataException("INSERT PADRINO: Padrino ya existente."); 
+			throw new InvalidDataException("INSERT DONANTE: Padrino ya existente."); 
                     }
                 }
         }
@@ -79,13 +79,27 @@ public class Command{
 		}
 	}
         
-        /*listar los donantes con aportes mensuales y los medios de pago **/
-        public static void showDonante()throws ClassNotFoundException, SQLException{
-		
+    /*listar los donantes con aportes mensuales y los medios de pago **/
+	public static void showDonante()throws ClassNotFoundException, SQLException{
+		System.out.println("Lista de donantes con sus aportes");
+		String query = "SELECT p.dni, p.apellido, p.nombre, nombre_programa, a.monto, a.frecuencia FROM persona p, aporte a, programa pr WHERE p.dni=a.dni AND programa=pr.programa";
+		Statement statement = connection.createStatement();
+		ResultSet resultSet = statement.executeQuery(query);
+		while(resultSet.next()) {
+	    	System.out.print("\n");
+	    	System.out.print(" DNI: " + resultSet.getString(1)+"\n");
+	    	System.out.print(" Apellido: " + resultSet.getString(2)+"\n");
+	    	System.out.print(" Nombre: " + resultSet.getString(3)+"\n");
+	    	System.out.print(" Programa: " + resultSet.getString(4)+"\n");
+	    	System.out.print(" Monto: " + resultSet.getString(5)+"\n");
+	    	System.out.print(" Frecuencia: " + resultSet.getString(6)+"\n");
+			System.out.print("\n");
+			System.out.print("\n");
+		}
 	}
         
-        //Funcion auxiliar de la clase
-        //Dado un Date calcula la edad con la fecha actual
+    //Funcion auxiliar de la clase
+    //Dado un Date calcula la edad con la fecha actual
 	private static int calcEdad (Date fechaNac) {
             java.util.Date now = new java.util.Date();
             int currYear = now.getYear();
@@ -99,5 +113,5 @@ public class Command{
             else {
                 return (ageWithBirthDay-1);
             }
-        }
+    }
 }
