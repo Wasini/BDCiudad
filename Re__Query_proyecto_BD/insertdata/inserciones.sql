@@ -2,7 +2,11 @@
 INSERT INTO ciudad.persona (DNI,APELLIDO,NOMBRE,DIRECCION,COD_POSTAL,E_MAIL,FACEBOOK,TEL_FIJO,FECHA_NAC,EDAD)
 VALUES (35279713,'Does','Jhon','Pueyrredon 2362',5800,'jhond@gmail.com',DEFAULT,DEFAULT,DATE '1990-10-10','25'),
 		(32940352,'Perez','Juan','Maipu 2010',5800,'jp200@gmail.com',DEFAULT,DEFAULT,DATE '1990-10-03','25'),
-		(22940352,'Tevez','Carlitos','Corrientes 39',5800,'tcarlosboca@gmail.com',DEFAULT,DEFAULT,DATE '1987-10-03','29');
+		(22940352,'Tevez','Carlitos','Corrientes 39',5800,'tcarlosboca@gmail.com',DEFAULT,DEFAULT,DATE '1987-10-03','29'),
+		(32940000,'Perez','Juan','Maipu 2010',5800,'jp200@gmail.com',DEFAULT,DEFAULT,DATE '1990-10-03','25'),
+		(22940002,'Tevez','Carlitos','Corrientes 39',5800,'tcarlosboca@gmail.com',DEFAULT,DEFAULT,DATE '1987-10-03','29'),
+		(32940003,'Perez','Juan','Maipu 2010',5800,'jp200@gmail.com',DEFAULT,DEFAULT,DATE '1990-10-03','25'),
+		(22940004,'Tevez','Carlitos','Corrientes 39',5800,'tcarlosboca@gmail.com',DEFAULT,DEFAULT,DATE '1987-10-03','29');
 ----------------------------------------------------------------------------------------------------
 --INSERCION DE VARIOS TELEFONOS PARA UNA PERSONA = 35279713 Jhon Does
 INSERT INTO ciudad.Mtel_cel (NUMERO,DNI)
@@ -12,7 +16,11 @@ VALUES (155243594,35279713),
 --INSERCION DE UN DONANTE, DNI REFERENCIA A PERSONA
 INSERT INTO ciudad.donante (DNI,OCUPACION,CUIL)
 VALUES (35279713,'Estudiante','20-3527913-9'),
-		(32940352,'Estudiante','20-32940352-9');
+		(32940352,'Estudiante','20-32940352-9'),
+		(22940004,'Estudiante','20-22940004-9'),
+		(32940003,'Estudiante','20-32940003-9'),
+		(22940002,'Estudiante','20-22940002-9'),
+		(32940000,'Estudiante','20-32940000-9');
 ----------------------------------------------------------------------------------------------------
 --INSERTAR UN CONTACTO
 --DNI Referencia a persona
@@ -29,7 +37,9 @@ VALUES (35279713,22940352,'Comentario','Conocido');
 WITH nempresa (EMPRESA_T,TELEFONO) as (
 	VALUES 
 	('Naranja',4629345),
-	('Visa',4740523)
+	('Visa',4740523),
+	('Galicia',4740523),
+	('Tucan',4740523)
 ),
 actualizados as (
 	UPDATE ciudad.empresa_tarjeta et
@@ -88,7 +98,11 @@ INSERT INTO ciudad.debito_transfer (BANCO,TITULAR,T_CUENTA_DT,NRO_CUENTA,CBU)
 WITH naportetarjeta (NRO,CODIGO_T,TITULAR,F_VENCIMIENTO,EMPRESA) AS (
 	VALUES 
 	(10224,603,'Juan',DATE '2016-05-24','Naranja'),
-	(20342,203,'Pepe',DATE '2017-05-22','Naranja')
+	(20342,203,'Pepe',DATE '2017-05-22','Naranja'),
+	(00000,603,'000',DATE '2016-05-24','Galicia'),
+	(00002,603,'002',DATE '2016-05-24','Tucan'),
+	(00003,203,'003',DATE '2017-05-22','Naranja'),
+	(00004,203,'004',DATE '2017-05-22','Galicia')
 ),
 --actualizados contiene las tablas actualizadas con new_debitos
 --aquellos valores que aun no estan en la tabla son omitidos
@@ -118,10 +132,19 @@ select * from ciudad.tcredito;
 ----------------------------------------------------------------------------------------------------
 --INSERCION DE UN PORGRAMA
 INSERT INTO ciudad.programa (PROGRAMA,DESCRIPCION)
-VALUES ('p1','');
+VALUES ('p1',''),
+	('p0',''),
+	('p2',''),
+	('p3',''),
+	('p4','');
 ----------------------------------------------------------------------------------------------------
 --Frecuencia = {'Mensual','Semestral'}
 --INSERTAR UN APORTE
 INSERT INTO ciudad.aporte (DNI,NOMBRE_PROGRAMA,COD_PAGO,MONTO,FRECUENCIA)
 VALUES
-	(35279713,'p1',1,2000,'Mensual');	
+	(35279713,'p1',1,2000,'Mensual'),
+	(22940002,'p1',2,1000,'Mensual'),
+	(32940000,'p2',3,3000,'Semestral'),
+	(22940002,'p2',4,1500,'Mensual'),
+	(22940002,'p3',1,500,'Mensual'),
+	(32940000,'p1',5,2000,'Mensual');
