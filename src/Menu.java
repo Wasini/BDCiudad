@@ -17,7 +17,7 @@ public class Menu{
 			if(selec==1){
 				Scanner sci = new Scanner(System.in);
 				System.out.println("Ingrese el dni"+"\n");
-				int dni = sci.nextInt();
+				int dni = sci.nextInt();                   
 				Scanner scs = new Scanner(System.in);
 				System.out.println("Ingrese el apellido");
 				String apellido = scs.nextLine();
@@ -44,19 +44,19 @@ public class Menu{
 				Command.insertPad(dni,apellido,nombre,direccion,c_postal,email,facebook,tel_f,f_nac);
                                 }
                                 catch (SQLException | InvalidDataException | ClassNotFoundException e) {
-                                    System.out.println("Ocurrio un error :"+e.toString());
+                                    System.out.println("Ocurrio un error "+e.toString());
                                 }
 			}
 			if(selec==2){
                             try { Command.deleteDon(); }
                             catch (SQLException | InvalidDataException | ClassNotFoundException e) {
-                                System.out.println("Ocurrio un error :"+e.toString());
+                                System.out.println("Ocurrio un error "+e.toString());
                             }
                         }
 			if(selec==3){
                             try { Command.showDonante(); }
                             catch (SQLException | ClassNotFoundException e) {
-                                System.out.println("Ocurrio un error :"+e.toString());
+                                System.out.println("Ocurrio un error "+e.toString());
                             }
                         }
 			if((selec<=0)||(selec>4)){System.out.println("Opcion incorrecta");}
