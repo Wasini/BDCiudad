@@ -21,6 +21,7 @@ public class deleteDonante{
 		System.out.println("Inserte el dni del donante a eliminar");
 		Scanner num = new Scanner(System.in);
 		int dni_donante = num.nextInt();
+		System.out.println(existDonante(dni_donante));
 		if (existDonante(dni_donante)){
 			String query = "DELETE FROM donante WHERE dni = "+dni_donante;
 			Statement statement = connection.createStatement();

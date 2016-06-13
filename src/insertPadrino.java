@@ -19,7 +19,6 @@ public class insertPadrino{
 	public static void insertPad(int dniAux, String apeAux, String nomAux, String dirAux, int c_posAux, String emailAux, String fbAux, 
 								int tel_FijoAux, Date f_nacAux, int edadAux)throws ClassNotFoundException, SQLException, InvalidDataException {
 		if (!existsPadrino(dniAux)){
-			System.out.println("Llegue2");
 			String query = "INSERT INTO persona (dni, apellido, nombre, direccion, cod_postal, e_mail, facebook, tel_fijo, fecha_nac, edad)"
 							+ " VALUES (?,?,?,?,?,?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(query);

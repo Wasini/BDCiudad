@@ -10,8 +10,9 @@ public class Main {
 		// intenta establecer la conexión de red a la base de datos.
     Connection connection = SinConnection.getInstance();
 
+    Menu.showing();
  		//Datos de un padrino a cargar
- 		int dni = 36425882;
+ 		/**int dni = 36425882;
  		String name = new String("Ezequias");
  		String lastname = new String("Aramburu");
  		String adress = new String("Dinkeldein 1156");
@@ -20,9 +21,9 @@ public class Main {
     String face = new String("Ezequias Aramburu");
     int tel_f = 4634777;
     java.sql.Date f_nac = java.sql.Date.valueOf("1992-01-14");
-    int edad = 24;
+    int edad = 24;**/
 
-    insertPadrino.insertPad(dni,name,lastname,adress,cod_postal,email,face,tel_f,f_nac,edad);
+    //insertPadrino.insertPad(dni,name,lastname,adress,cod_postal,email,face,tel_f,f_nac,edad);
     //deleteDonante.deleteDon();
 
   	/**String queryOut = "SELECT * FROM  ciudad.persona";
