@@ -21,9 +21,11 @@ public class Main {
     String face = new String("Ezequias Aramburu");
     int tel_f = 4634777;
     java.sql.Date f_nac = java.sql.Date.valueOf("1992-01-14");
-    int edad = 24;
 
-    insertPadrino.insertPad(dni,name,lastname,adress,cod_postal,email,face,tel_f,f_nac,edad);
+   //insertPadrino.insertDonante(dni,name,lastname,adress,cod_postal,email,face,tel_f,f_nac);
+    // Command.insertDonante(dni, "Estudiante", "20-36425882-9");
+    Command.deleteDon();
+    
     //deleteDonante.deleteDon();
 
   	/**String queryOut = "SELECT * FROM  ciudad.persona";
