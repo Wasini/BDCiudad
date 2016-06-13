@@ -27,6 +27,7 @@ Para eliminar donante se solicita el dni del donante
 Falla cuando:
 
 	* El dni ingresado no corresponde a ningun donante en la base de datos.
+	* El dni ingresado ya fue eliminado anteriormente (no puede haber dos veces en la tabla de donantes eliminados, el mismo donante)
 
 Para listar los donantes con sus aportes solo se debe seleccionar la opcion 3) del menu
 
