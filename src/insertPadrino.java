@@ -1,6 +1,7 @@
 /** Clase para insertar un padrino **/
 import java.sql.*;
 import java.io.*;
+
 public class insertPadrino{
 
 	//Instancia de la coneccion
@@ -48,5 +49,25 @@ public class insertPadrino{
 			throw new InvalidDataException("INSERT PADRINO: Padrino ya existente."); 
 		}
 	}
-	
+        
+        public static void upsertPersona(int dniAux, String apeAux, String nomAux, String dirAux, int c_posAux, String emailAux, String fbAux,int tel_FijoAux, Date f_nacAux, int edadAux) {
+            String $values = "(dni, apellido, nombre, direccion, cod_postal, e_mail, facebook, tel_fijo, fecha_nac, edad)";
+            String $upsert = "UPDATE persona p "
+                    + "SET apellido = nv.apellido,"
+                    + "nombre = nv.nombre,"
+                    + "direccion = nv.direccion,"
+                    + "cod_postal = nv.cod_postal,"
+                    + "e_mail = nv.e_mail,"
+                    + "facebook = nv.facebook,"
+                    + "tel_fijo = nv.tel_fijo,"
+                    + "fecha_nac = nv.fecha_nac,"
+                    + "edad = "+calcEdad(f_nacAux)+","
+                    + "";
+            String $insert = " ";
+            String query = "(WITH nuevosValores "+$values+" AS (?,?,?,?,?,?,?,?,?,?), upsert AS ("+$upsert+" RETURNING *) "+$insert+" WHERE NOT EXISTS (SELECT * FROM upsert);";
+        }
+	private static int calcEdad (Date fechaNac) {
+            int currYear = new java.util.Date().getYear();
+            return (currYear - fechaNac.getYear());
+        }
 }
