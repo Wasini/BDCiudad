@@ -1,7 +1,7 @@
 # BDCiudad
 
-##Coneccion a la base de datos
-Los datos para acceder a la base de datos se encuentran en la clase SinConnection
+## Coneccion a la base de datos
+Los datos para acceder a la base de datos se encuentran en la clase SinConnection 
 
 El usuario por defecto es postgres y la contraseña root, si se quiere conectar con otro usuario, cambie esos valores
 
@@ -11,7 +11,7 @@ El nombre del esquema es ciudad (no cambiar)
 
 A la hora de ejecutar el script para la creacion de las tablas usar una base de datos con el nombre ciudad, sino, se debe modificar el nombre de la base de datos en el Url por defecto al utilizado
 
-##Clase Main
+## Clase Main
 
 La clase main corre un menu por consola donde se elige la opcion que se desea
 
@@ -31,7 +31,7 @@ Falla cuando:
 
 Para listar los donantes con sus aportes solo se debe seleccionar la opcion 3) del menu
 
-##Comandos para correr desde consola:
+## Comandos para correr desde consola:
 
 	* Posicionado en el directorio src compilar todos los archivos .java --> javac nombreArchivo.java 
 
